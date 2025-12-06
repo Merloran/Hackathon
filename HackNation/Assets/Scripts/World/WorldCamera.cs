@@ -40,7 +40,7 @@ public class WorldCamera : MonoBehaviour
         var pressedTouches = new List<TouchControl>();
         TouchControl releasedTouch = null;
 
-        foreach (var touch in Touchscreen.current.touches)
+        foreach (TouchControl touch in Touchscreen.current.touches)
         {
             if (touch.press.isPressed)
             {
@@ -58,8 +58,8 @@ public class WorldCamera : MonoBehaviour
         {
             isDragging = true;
 
-            var t0 = pressedTouches[0];
-            var t1 = pressedTouches[1];
+            TouchControl t0 = pressedTouches[0];
+            TouchControl t1 = pressedTouches[1];
 
             Vector2 t0Pos = t0.position.ReadValue();
             Vector2 t1Pos = t1.position.ReadValue();
@@ -73,7 +73,7 @@ public class WorldCamera : MonoBehaviour
         }
         else if (touchCount == 1) // DRAG
         {
-            var t0 = pressedTouches[0];
+            TouchControl t0 = pressedTouches[0];
 
             if (t0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
             {
@@ -118,7 +118,7 @@ public class WorldCamera : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f, clickLayer))
         {
-            var interactable = hit.collider.GetComponent<Interactable>();
+            Clickable interactable = hit.collider.GetComponent<Clickable>();
             if (interactable != null)
             {
                 interactable.OnClick();
