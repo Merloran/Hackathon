@@ -500,8 +500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefabs:
-  - {fileID: 8974069191551173420, guid: 82249551867fbd142beb458f15561f82, type: 3}
-  - {fileID: 8974069191551173420, guid: dba54151092e81148977f681a6d47962, type: 3}
+  - {fileID: 8974069191551173420, guid: 10f44121edc026848a04a1336565bb29, type: 3}
+  - {fileID: 8974069191551173420, guid: 667d2c7bdfa06bb4a90ff8e215d01e11, type: 3}
+  - {fileID: 8974069191551173420, guid: 85509afb0f8ca1a4097bf71633c9d2b4, type: 3}
   worldTransform: {fileID: 1263591516}
   radius: 0.5
   healthRange: {x: 40, y: 200}
