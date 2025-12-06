@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 1319302957500033600}
   - component: {fileID: 7233432183707123600}
   - component: {fileID: 4809939992131706754}
+  - component: {fileID: 1885928166345220617}
   m_Layer: 3
   m_Name: KrakenBoss
   m_TagString: Untagged
@@ -514,6 +515,28 @@ MonoBehaviour:
   boss: {fileID: 7233432183707123600}
   damageRange: {x: 12, y: 23}
   attackCooldownS: 10
+--- !u!95 &1885928166345220617
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974069191551173420}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2708816251490590656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,13 +609,47 @@ PrefabInstance:
       propertyPath: m_Name
       value: kraken
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 471642358ca1c464a837f859f4b2ad29, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8129152628516761243, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3054204962066951478}
   m_SourcePrefab: {fileID: 100100000, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
 --- !u!4 &2458155581020289067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
   m_PrefabInstance: {fileID: 2708816251490590656}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6144927742602932571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8129152628516761243, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
+  m_PrefabInstance: {fileID: 2708816251490590656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3054204962066951478
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144927742602932571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 471642358ca1c464a837f859f4b2ad29, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

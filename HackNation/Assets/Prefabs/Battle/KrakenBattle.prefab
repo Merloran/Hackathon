@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kraken
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 627f02fe979850946978755aa92f9a1d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 471642358ca1c464a837f859f4b2ad29, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

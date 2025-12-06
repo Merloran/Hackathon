@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: eel
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 534f6e14923f4074d9bfa7de8c6a7558, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 37490acde279cf54ab3e8f5cddc6dce1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
