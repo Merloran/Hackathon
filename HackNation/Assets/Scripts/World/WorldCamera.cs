@@ -3,21 +3,25 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using System.Collections.Generic;
 
-
 public class WorldCamera : MonoBehaviour
 {
     [Header("Target")]
     public Transform target;
 
     [Header("Settings")]
-    public float distance = 10.0f;
+    public float distance = 10f;
     public float zoomRate = 0.05f;
-    public Vector2 rotationSpeed = new Vector2(0.4f, 0.4f);
+    public Vector2 rotationSpeed = new Vector2(0.05f, 0.05f);
     public Vector2 yLimits = new Vector2(-90f, 90f);
     public Vector2 zoomLimits = new Vector2(10f, 30f);
+    public float dragThreshold = 10f;
+
+    [SerializeField] private LayerMask clickLayer;
 
     private float x = 0.0f;
     private float y = 0.0f;
+    private Vector2 totalDragDelta = Vector2.zero;
+    private bool isDragging = false;
 
     void Start()
     {
@@ -31,52 +35,99 @@ public class WorldCamera : MonoBehaviour
     void LateUpdate()
     {
         if (!target) return;
-
         if (Touchscreen.current == null) return;
 
-        var activeTouches = new List<TouchControl>();
-        foreach (TouchControl touch in Touchscreen.current.touches)
+        var pressedTouches = new List<TouchControl>();
+        TouchControl releasedTouch = null;
+
+        foreach (var touch in Touchscreen.current.touches)
         {
             if (touch.press.isPressed)
             {
-                activeTouches.Add(touch);
+                pressedTouches.Add(touch);
             }
-        }
-
-        if (activeTouches.Count == 1) // Rotate
-        {
-            TouchControl touch0 = activeTouches[0];
-
-            if (touch0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+            else if (touch.press.wasReleasedThisFrame)
             {
-                Vector2 delta = touch0.delta.ReadValue();
-                x += delta.x * rotationSpeed.x;
-                y -= delta.y * rotationSpeed.y;
+                releasedTouch = touch;
             }
         }
-        else if (activeTouches.Count == 2) // ZOOM
+
+        int touchCount = pressedTouches.Count;
+
+        if (touchCount == 2) // ZOOM
         {
-            TouchControl touch0 = activeTouches[0];
-            TouchControl touch1 = activeTouches[1];
+            isDragging = true;
 
-            Vector2 t0Pos = touch0.position.ReadValue();
-            Vector2 t1Pos = touch1.position.ReadValue();
+            var t0 = pressedTouches[0];
+            var t1 = pressedTouches[1];
 
-            Vector2 t0PrevPos = t0Pos - touch0.delta.ReadValue();
-            Vector2 t1PrevPos = t1Pos - touch1.delta.ReadValue();
+            Vector2 t0Pos = t0.position.ReadValue();
+            Vector2 t1Pos = t1.position.ReadValue();
+            Vector2 t0Prev = t0Pos - t0.delta.ReadValue();
+            Vector2 t1Prev = t1Pos - t1.delta.ReadValue();
 
-            float prevMag = (t0PrevPos - t1PrevPos).magnitude;
+            float prevMag = (t0Prev - t1Prev).magnitude;
             float currentMag = (t0Pos - t1Pos).magnitude;
 
-            float diff = prevMag - currentMag;
+            distance += (prevMag - currentMag) * zoomRate;
+        }
+        else if (touchCount == 1) // DRAG
+        {
+            var t0 = pressedTouches[0];
 
-            distance += diff * zoomRate;
+            if (t0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+            {
+                isDragging = false;
+                totalDragDelta = Vector2.zero;
+            }
+
+            if (t0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+            {
+                Vector2 delta = t0.delta.ReadValue();
+                totalDragDelta += delta;
+
+                x += delta.x * rotationSpeed.x;
+                y -= delta.y * rotationSpeed.y;
+
+                if (totalDragDelta.magnitude > dragThreshold)
+                {
+                    isDragging = true;
+                }
+            }
+        }
+        else if (touchCount == 0 && releasedTouch != null) // TAP
+        {
+            if (!isDragging)
+            {
+                DoClick(releasedTouch.position.ReadValue());
+            }
+
+            isDragging = false;
+            totalDragDelta = Vector2.zero;
         }
 
         y = ClampAngle(y, yLimits.x, yLimits.y);
         distance = Mathf.Clamp(distance, zoomLimits.x, zoomLimits.y);
-
         UpdateCameraPosition();
+    }
+
+    void DoClick(Vector2 screenPos)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, clickLayer))
+        {
+            var interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                interactable.OnClick();
+            }
+            else
+            {
+                Debug.Log("Trafiono: " + hit.collider.name);
+            }
+        }
     }
 
     void UpdateCameraPosition()
