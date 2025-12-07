@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Splines;
+using static UnityEngine.GraphicsBuffer;
 
 public class MoveOnSpline : MonoBehaviour
 {
@@ -12,13 +13,14 @@ public class MoveOnSpline : MonoBehaviour
         if (spline == null || spline.Spline == null) return;
 
         t += speed * Time.deltaTime;
-        t %= 1f; // ruch w kó³ko
+        t %= 1f;
 
         // Pobranie pozycji i rotacji
         var pos = spline.EvaluatePosition(t);
-        var rot = spline.EvaluateTangent(t);
+        var tangent = spline.EvaluateTangent(t);
+        transform.rotation = Quaternion.LookRotation(tangent, Vector3.up);
+        transform.rotation *= Quaternion.Euler(0, -270, 0);
 
         transform.position = pos;
-        transform.rotation = Quaternion.LookRotation(rot);
     }
 }

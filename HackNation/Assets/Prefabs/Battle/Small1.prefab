@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087372022014394030}
-  - component: {fileID: 231511218054746144}
   - component: {fileID: 6395247927901488112}
   m_Layer: 0
   m_Name: Small1
@@ -65,26 +64,6 @@ Transform:
   - {fileID: 1490963133833349904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &231511218054746144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2824612674258511415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f5a8135a6e013c458561028f6999685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Crew
-  spawnPoints:
-  - {fileID: 1059022777069040745}
-  - {fileID: 9088487483557818588}
-  - {fileID: 6924187265898284621}
-  initialCrew:
-  - {fileID: 11400000, guid: 7fd51aa818b87924a823b502dd75a66f, type: 2}
-  - {fileID: 11400000, guid: d6327d86b5c57794c88a1826519a4372, type: 2}
-  - {fileID: 11400000, guid: 8f06f0bc43e76654c862e5c86cb39ad2, type: 2}
 --- !u!114 &6395247927901488112
 MonoBehaviour:
   m_ObjectHideFlags: 0
