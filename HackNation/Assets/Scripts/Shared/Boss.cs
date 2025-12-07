@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
 {
     public BossData data;
     public Slider slider;
-
+    public ParticleSystem damageParticles;
     public event Action<Boss> OnDeath;
     public event Action<bool> OnHealthChanged;
 
@@ -28,7 +28,10 @@ public class Boss : MonoBehaviour
     public void ApplyDamage(float damage, bool isPlayer)
     {
         if (data == null) return;
-
+        if (isPlayer)
+        {
+            damageParticles.Play();
+        }
         data.currentHealth -= damage;
 
         UpdateUI();
