@@ -4,7 +4,7 @@ public class BattleSimulation : MonoBehaviour
 {
     public Boss boss;
     public Vector2 damageRange = new Vector2(12, 23);
-    public float attackCooldownS = 10f;
+    public float attackCooldownS = 1.5f;
     private float clock = 0f;
     public bool isPlayer = false;
 

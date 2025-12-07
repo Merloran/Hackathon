@@ -5236,7 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleSimulation
   boss: {fileID: 576565492}
   damageRange: {x: 12, y: 23}
-  attackCooldownS: 10
+  attackCooldownS: 1.5
   isPlayer: 0
 --- !u!4 &576565491 stripped
 Transform:
@@ -5754,6 +5754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small1
       objectReference: {fileID: 0}
+    - target: {fileID: 5614025914592699945, guid: 69465633f9fd2ff40b2d3bac729a5dac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0c335cc6170c2bb44b65d7d443a7b13c, type: 2}
     - target: {fileID: 6395247927901488112, guid: 69465633f9fd2ff40b2d3bac729a5dac, type: 3}
       propertyPath: speed
       value: 0.05
