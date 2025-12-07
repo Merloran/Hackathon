@@ -8,8 +8,8 @@ public class Crew : MonoBehaviour
     public List<CrewmanData> initialCrew = new List<CrewmanData>();
     List<GameObject> spawned = new List<GameObject>();
 
-    private Vector2 crewDamage;
-    private float crewCooldownS;
+    public Vector2 crewDamage;
+    public float crewCooldownS;
 
     void Start()
     {

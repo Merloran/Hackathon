@@ -8,12 +8,24 @@ public class Location : MonoBehaviour
 
     private void Start()
     {
-        bossData = gameObject.GetComponent<Boss>().data;
+        Boss bd;
+        gameObject.TryGetComponent<Boss>(out bd);
+        if (bd != null)
+        {
+            bossData = bd.data;
+        }
+        else
+        {
+            bossData = null;
+        }
     }
 
     public void LoadScene()
     {
-        BossSceneData.TargetBossID = bossData.uniqueId;
+        if (bossData != null)
+        {
+            BossSceneData.TargetBossID = bossData.uniqueId;
+        }
 
         SceneManager.LoadScene(sceneName);
     }
