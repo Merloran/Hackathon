@@ -8,6 +8,8 @@ public class BattleManager : MonoBehaviour
     public Boss bossScript;
     private List<BossData> allBossesData = new List<BossData>();
     private BossData currentBossData;
+    private Vector2 totalCrewDamage;
+    private float totalCooldownS;
 
     void Start()
     {

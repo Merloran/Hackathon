@@ -90,6 +90,8 @@ public class BossSpawner : MonoBehaviour
     {
         GameObject obj = Instantiate(prefab, data.position, Quaternion.identity);
         obj.transform.up = (data.position - worldTransform.position).normalized;
+        float randomAngle = Random.Range(0f, 360f);
+        obj.transform.Rotate(obj.transform.up, randomAngle, Space.World);
         Boss bossScript = obj.GetComponent<Boss>();
         bossScript.Initialize(data);
         bossScript.OnHealthChanged += () => { OnBossDataChanged(); };
