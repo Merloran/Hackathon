@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7e16df24c7bb9d845850abca8dd2a64c
+guid: 486d0ea5904445b42a8a7794e19e3431
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Planet Benson 2
+  - Palamecia Titling
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
