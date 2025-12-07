@@ -94,7 +94,7 @@ public class BossSpawner : MonoBehaviour
         obj.transform.Rotate(obj.transform.up, randomAngle, Space.World);
         Boss bossScript = obj.GetComponent<Boss>();
         bossScript.Initialize(data);
-        bossScript.OnHealthChanged += () => { OnBossDataChanged(); };
+        bossScript.OnHealthChanged += (isPlayer) => { OnBossDataChanged(); };
 
         bossScript.OnDeath += (deadBoss) => { OnBossDied(deadBoss.data); };
         SaveGame();

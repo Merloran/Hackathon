@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
     public Slider slider;
 
     public event Action<Boss> OnDeath;
-    public event Action OnHealthChanged;
+    public event Action<bool> OnHealthChanged;
 
     public void Initialize(BossData assignedData)
     {
@@ -25,7 +25,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(float damage, bool isPlayer)
     {
         if (data == null) return;
 
@@ -33,16 +33,21 @@ public class Boss : MonoBehaviour
 
         UpdateUI();
 
-        OnHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke(gameObject);
 
         if (data.currentHealth <= 0)
         {
-            Die();
+            Die(isPlayer);
         }
     }
 
-    void Die()
+    void Die(bool isPlayer)
     {
+        if (isPlayer)
+        {
+            BossSceneData.scores += 20;
+        }
+
         OnDeath?.Invoke(this);
         Destroy(gameObject);
     }

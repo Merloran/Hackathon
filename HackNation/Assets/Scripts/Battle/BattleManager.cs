@@ -41,7 +41,7 @@ public class BattleManager : MonoBehaviour
         if (currentBossData != null)
         {
             bossScript.Initialize(currentBossData);
-            bossScript.OnHealthChanged += () =>
+            bossScript.OnHealthChanged += (isPlayer) =>
             {
                 SaveSystem.SaveBosses(allBossesData);
             };
@@ -54,14 +54,6 @@ public class BattleManager : MonoBehaviour
         else
         {
             Debug.LogError("Nie znaleziono bossa o takim ID w wczytanych danych!");
-        }
-    }
-
-    public void DealDamageToBoss()
-    {
-        if (bossScript != null)
-        {
-            bossScript.ApplyDamage(10f);
         }
     }
 

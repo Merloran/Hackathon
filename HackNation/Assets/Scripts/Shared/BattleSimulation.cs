@@ -6,6 +6,7 @@ public class BattleSimulation : MonoBehaviour
     public Vector2 damageRange = new Vector2(12, 23);
     public float attackCooldownS = 10f;
     private float clock = 0f;
+    public bool isPlayer = false;
 
     void Update()
     {
@@ -13,7 +14,7 @@ public class BattleSimulation : MonoBehaviour
         if (clock > attackCooldownS)
         {
             clock = 0f;
-            boss.ApplyDamage(Random.Range(damageRange.x, damageRange.y));
+            boss.ApplyDamage(Random.Range(damageRange.x, damageRange.y), isPlayer);
         }
     }
 }

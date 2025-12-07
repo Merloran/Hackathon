@@ -5,4 +5,5 @@ public static class BossSceneData
     public static string TargetBossID;
     public static List<CrewmanData> SelectedCrew = new List<CrewmanData>();
     public static CrewmanData crewmanToChange;
+    public static int scores = 0;
 }

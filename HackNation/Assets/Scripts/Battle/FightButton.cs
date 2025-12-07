@@ -17,5 +17,6 @@ public class FightButton : MonoBehaviour
         sim.damageRange = crew.crewDamage;
         sim.attackCooldownS = crew.crewCooldownS;
         sim.boss = boss;
+        sim.isPlayer = true;
     }
 }
