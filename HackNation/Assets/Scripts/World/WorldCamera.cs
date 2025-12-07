@@ -15,6 +15,7 @@ public class WorldCamera : MonoBehaviour
     public Vector2 yLimits = new Vector2(-90f, 90f);
     public Vector2 zoomLimits = new Vector2(10f, 30f);
     public float dragThreshold = 10f;
+    public bool isInUI = false;
 
     [SerializeField] private LayerMask clickLayer;
 
@@ -34,7 +35,7 @@ public class WorldCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!target) return;
+        if (!target || isInUI) return;
         if (Touchscreen.current == null) return;
 
         var pressedTouches = new List<TouchControl>();
