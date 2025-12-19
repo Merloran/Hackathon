@@ -84,6 +84,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fd51aa818b87924a823b502dd75a66f, type: 2}
   - {fileID: 11400000, guid: d6327d86b5c57794c88a1826519a4372, type: 2}
   - {fileID: 11400000, guid: 8f06f0bc43e76654c862e5c86cb39ad2, type: 2}
+  animatorController: {fileID: 9100000, guid: 0c335cc6170c2bb44b65d7d443a7b13c, type: 2}
+  crewDamage: {x: 0, y: 0}
+  crewCooldownS: 0
 --- !u!1 &6125435643384607513
 GameObject:
   m_ObjectHideFlags: 0

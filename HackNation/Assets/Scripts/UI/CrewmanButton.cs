@@ -6,12 +6,14 @@ public class CrewmanButton : MonoBehaviour
 {
     public CrewmanData data;
     private Button button;
+    private Image image;
     private Crew crew;
 
     void Start()
     {
         crew = FindFirstObjectByType<Crew>();
         button = GetComponent<Button>();
+        image = GetComponent<Image>();
     }
 
     void Update()
@@ -48,10 +50,13 @@ public class CrewmanButton : MonoBehaviour
             }
         }
         crew.SwapCrew(BossSceneData.crewmanToChange, data);
+        BossSceneData.currentCrewImage.sprite = image.sprite;
     }
 
-    public void SetCurrentCrewmate(int index)
+    public void SetCurrentCrewmate(GameObject selected)
     {
-        BossSceneData.crewmanToChange = BossSceneData.SelectedCrew[index];
+        var selectedCrew = selected.GetComponent<SelectedCrewButton>();
+        BossSceneData.crewmanToChange = BossSceneData.SelectedCrew[selectedCrew.index];
+        BossSceneData.currentCrewImage = selected.GetComponentInChildren<Image>();
     }
 }

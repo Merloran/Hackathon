@@ -7,6 +7,7 @@ public class Crew : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>();
     public List<CrewmanData> initialCrew = new List<CrewmanData>();
     List<GameObject> spawned = new List<GameObject>();
+    public RuntimeAnimatorController animatorController;
 
     public Vector2 crewDamage;
     public float crewCooldownS;
@@ -23,6 +24,7 @@ public class Crew : MonoBehaviour
             {
                 BossSceneData.SelectedCrew.Add(initialCrew[i]);
             }
+            BossSceneData.crewmanToChange = initialCrew[0];
         }
         SpawnCrew();
     }
@@ -56,7 +58,12 @@ public class Crew : MonoBehaviour
 
             if (data.visualPrefab != null)
             {
-                spawned.Add(Instantiate(data.visualPrefab, spawnPoints[i].position, spawnPoints[i].rotation, spawnPoints[i]));
+                var obj = Instantiate(data.visualPrefab, spawnPoints[i].position, spawnPoints[i].rotation, spawnPoints[i]);
+                var animator = obj.GetComponent<Animator>();
+                animator.runtimeAnimatorController = animatorController;
+                animator.SetInteger("animationIndex", 1);
+                animator.applyRootMotion = false;
+                spawned.Add(obj);
             }
         }
 
@@ -76,6 +83,16 @@ public class Crew : MonoBehaviour
         }
 
         SpawnCrew();
+    }
+
+    public void AnimateCrew()
+    {
+        for (int i = 0; i < spawned.Count; i++)
+        {
+            var animator = spawned[i].GetComponent<Animator>();
+            animator.SetInteger("animationIndex", Random.Range(2, 5));
+            animator.SetTrigger("ChangeAnimation");
+        }
     }
 
     void CalculateValues()

@@ -18,5 +18,6 @@ public class FightButton : MonoBehaviour
         sim.attackCooldownS = crew.crewCooldownS;
         sim.boss = boss;
         sim.isPlayer = true;
+        crew.AnimateCrew();
     }
 }
