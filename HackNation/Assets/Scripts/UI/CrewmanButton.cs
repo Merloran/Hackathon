@@ -22,6 +22,8 @@ public class CrewmanButton : MonoBehaviour
             {
                 var colors = button.colors;
                 colors.normalColor = new Color(0f, 1.0f, 0.0f);
+                colors.highlightedColor = new Color(0f, 1.0f, 0.0f);
+                colors.selectedColor = new Color(0f, 1.0f, 0.0f);
                 button.colors = colors;
                 return;
             }
@@ -30,6 +32,8 @@ public class CrewmanButton : MonoBehaviour
         {
             var colors = button.colors;
             colors.normalColor = new Color(0.8f, 0.8f, 0.8f);
+            colors.highlightedColor = new Color(0.8f, 0.8f, 0.8f);
+            colors.selectedColor = new Color(0.8f, 0.8f, 0.8f);
             button.colors = colors;
         }
     }

@@ -56,7 +56,7 @@ public class Crew : MonoBehaviour
 
             if (data.visualPrefab != null)
             {
-                Instantiate(data.visualPrefab, spawnPoints[i].position, spawnPoints[i].rotation, spawnPoints[i]);
+                spawned.Add(Instantiate(data.visualPrefab, spawnPoints[i].position, spawnPoints[i].rotation, spawnPoints[i]));
             }
         }
 
@@ -70,6 +70,7 @@ public class Crew : MonoBehaviour
             if (previous == BossSceneData.SelectedCrew[i])
             {
                 BossSceneData.SelectedCrew[i] = current;
+                BossSceneData.crewmanToChange = current;
                 break;
             }
         }
