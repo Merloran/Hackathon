@@ -2859,9 +2859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wstecz
-
-'
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f86107b082eca741a791c684e49217f, type: 2}
   m_sharedMaterial: {fileID: -3564821887273145949, guid: 2f86107b082eca741a791c684e49217f, type: 2}
@@ -3528,8 +3526,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2f86107b082eca741a791c684e49217f, type: 2}
-  m_sharedMaterial: {fileID: -3564821887273145949, guid: 2f86107b082eca741a791c684e49217f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4099,10 +4097,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Za\u0142oga"
+  m_text: Crew
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2f86107b082eca741a791c684e49217f, type: 2}
-  m_sharedMaterial: {fileID: -3564821887273145949, guid: 2f86107b082eca741a791c684e49217f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
